@@ -267,6 +267,7 @@ export const __updateCardLocateOtherBucket =
   };
 
 // 카드 정보 수정
+<<<<<<< HEAD
 export const __editCardInfos = (roomId, cardInfos) => async (dispatch) => {
   try {
     await cardApi.editCardInfo(roomId, cardInfos);
@@ -275,6 +276,18 @@ export const __editCardInfos = (roomId, cardInfos) => async (dispatch) => {
     console.log(e);
   }
 };
+=======
+export const __editCardInfos =
+  (roomId, cardId, cardInfos) => async (dispatch) => {
+    try {
+      const { data } = await cardApi.editCardInfo(roomId, cardInfos);
+      console.log(`결과 : ${data.message}`);
+      dispatch(editCardInfos(cardInfos));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+>>>>>>> dce8d85 (feat : 카드 클린업 액션 추가)
 
 // 카드삭제
 export const __deleteCard =
