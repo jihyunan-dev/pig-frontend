@@ -86,6 +86,7 @@ export const __checkedTodo =
     }
   };
 
+<<<<<<< HEAD
 export const __memberHandler =
   (roomId, todoId, memberName) => async (dispatch, getState) => {
     const memberList = getState().member.allMembers;
@@ -110,6 +111,21 @@ export const __memberHandler =
       await todoApi.removeMember(roomId, todoId, targetMemberId);
       dispatch(removeMember(todoId, targetMemberId));
     }
+=======
+export const __addMember = (roomId, todoId, members) => async (dispatch) => {
+  try {
+    await todoApi.addMember(roomId, todoId, members);
+    dispatch(addMember(todoId, { memberId: members }));
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const __removeMember =
+  (roomId, todoId, memberId) => async (dispatch) => {
+    await todoApi.removeMember(roomId, todoId, memberId);
+    dispatch(removeMember(todoId, memberId));
+>>>>>>> 01cde93 (feat : todo member add & remove 구현)
   };
 
 export const __deleteTodo = (roomId, todoId) => async (dispatch) => {
@@ -127,6 +143,15 @@ const initialState = {
 
 export const todos = handleActions(
   {
+    [ADD_MEMBER]: (state, { payload }) =>
+      produce(state, (draft) => {
+        const { todoId, member } = payload;
+        const targetIdx = state.todos.findIndex(
+          (todo) => todo.todoId === todoId
+        );
+        draft.todos[targetIdx].members.push(member);
+      }),
+
     [LOAD_TODOS]: (state, { payload }) =>
       produce(state, (draft) => {
         draft.todos = payload.todos;
@@ -176,6 +201,7 @@ export const todos = handleActions(
         );
         draft.todos[targetIdx].members.splice(targetMember, 1);
       }),
+<<<<<<< HEAD
 
     [ADD_MEMBER]: (state, { payload }) =>
       produce(state, (draft) => {
@@ -185,6 +211,8 @@ export const todos = handleActions(
         );
         draft.todos[targetIdx].members.push(member);
       }),
+=======
+>>>>>>> 01cde93 (feat : todo member add & remove 구현)
   },
 
   initialState
