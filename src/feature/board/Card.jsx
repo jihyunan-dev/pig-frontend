@@ -42,6 +42,10 @@ const Card = ({ card, index, bucketId }) => {
             isDragging={snapshot.isDragging}
           >
             <Flex jc="flex-start" mg="0 0 10px 0">
+<<<<<<< HEAD
+=======
+              <Dot bg="red" />
+>>>>>>> 0e18dfa (edit : 카드 상세 정보 불러오기 api 로직 수정 & 디자인 적용)
               <Text type="body_2">{card.cardTitle}</Text>
               <Icon
                 icon="remove"
@@ -96,6 +100,17 @@ const Flex = styled.div`
 const TodosHeader = styled(Text)`
   padding: 0 40px;
   margin-bottom: 21px;
+<<<<<<< HEAD
+=======
+`;
+
+const Dot = styled.div`
+  background-color: red;
+  margin-right: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+>>>>>>> 0e18dfa (edit : 카드 상세 정보 불러오기 api 로직 수정 & 디자인 적용)
 `;
 
 export default Card;
