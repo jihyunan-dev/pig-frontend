@@ -2,11 +2,18 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { Input, Text } from "../../elem";
 import Filled from "../../assets/icons/checkbox-filled.svg";
+<<<<<<< HEAD
 import { useSelector } from "react-redux";
 import BoardDrop from "./BoardDrop";
 
 import {
   __memberHandler,
+=======
+
+import {
+  __addMember,
+  __removeMember,
+>>>>>>> 07de2c9 (feat : formik 제거 & inputToggle 적용 & 디자인 적용)
   __checkedTodo,
   __deleteTodo,
   __editTotoTitle,
@@ -19,7 +26,10 @@ import InputToggle from "../../components/InputToggle";
 
 const Todo = ({ todo }) => {
   const dispatch = useDispatch();
+<<<<<<< HEAD
   const allMembers = useSelector((state) => state.member.allMembers);
+=======
+>>>>>>> 07de2c9 (feat : formik 제거 & inputToggle 적용 & 디자인 적용)
 
   // global
   const { roomId } = useParams();
@@ -68,6 +78,7 @@ const Todo = ({ todo }) => {
             value={todo.todoTitle}
           />
         </TodoTitle>
+<<<<<<< HEAD
 
         <StyleDiv flex={["", "center"]} wh={["50px"]} mg="0 10px">
           <BoardDrop.Container direction="right" type="default" shadow>
@@ -96,6 +107,27 @@ const Todo = ({ todo }) => {
         <div onClick={deleteTodoHandler}>
           <RemoveIcon icon="remove" size="14px" color="var(--grey)" />
         </div>
+=======
+        <div onClick={deleteTodoHandler}>
+          <RemoveIcon icon="remove" size="14px" color="var(--grey)" />
+        </div>
+
+        {/* <Flex>
+                <select
+                  onChange={(e) => {
+                    if (e.target.value !== "멤버선택")
+                      dispatch(
+                        __addMember(roomId, todo.todoId, e.target.value)
+                      );
+                  }}
+                >
+                  <option>멤버선택</option>
+                  {members.map((memeber, idx) => (
+                    <option key={idx}>{memeber}</option>
+                  ))}
+                </select>                
+              </Flex> */}
+>>>>>>> 07de2c9 (feat : formik 제거 & inputToggle 적용 & 디자인 적용)
       </TodoItem>
     </StyleDiv>
   );
