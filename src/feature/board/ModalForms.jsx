@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
+=======
+import React, { useEffect } from "react";
+>>>>>>> 4cecc02 (edit : card clean up 적용 & 디자인 적용)
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Text } from "../../elem";
@@ -6,19 +10,30 @@ import { __editCardInfos, resetCard } from "../../redux/modules/board";
 
 import styled, { css } from "styled-components";
 import InputToggle from "../../components/InputToggle";
+<<<<<<< HEAD
 import DatePickerExample from "./DatePicker";
 import BoardDrop from "./BoardDrop";
 import moment from "moment";
+=======
+
+// import "react-datepicker/dist/react-datepicker.css";
+>>>>>>> 4cecc02 (edit : card clean up 적용 & 디자인 적용)
 
 const ModalForms = ({ content, setContent }) => {
   const dispatch = useDispatch();
 
+<<<<<<< HEAD
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
 
   // 전역변수
   const { roomId } = useParams();
 
+=======
+  // 전역변수
+  const { roomId } = useParams();
+
+>>>>>>> 4cecc02 (edit : card clean up 적용 & 디자인 적용)
   useEffect(() => {
     return () => {
       dispatch(resetCard());
@@ -27,13 +42,18 @@ const ModalForms = ({ content, setContent }) => {
 
   const editFunc = (key, value) => {
     const editObj = { cardId: content.cardId, [key]: value };
+<<<<<<< HEAD
     dispatch(__editCardInfos(roomId, editObj));
+=======
+    dispatch(__editCardInfos(roomId, content.cardId, editObj));
+>>>>>>> 4cecc02 (edit : card clean up 적용 & 디자인 적용)
   };
 
   return (
     <Container>
       <StyleDiv wh={["480px", "26px"]} mg="0 0 20px 0">
         <StyleDiv flex={["flex-start", "center", "10"]}>
+<<<<<<< HEAD
           <BoardDrop.Container
             componentType="colorPicker"
             bgColor={content.color}
@@ -74,6 +94,9 @@ const ModalForms = ({ content, setContent }) => {
               }}
             ></BoardDrop.Item>
           </BoardDrop.Container>
+=======
+          <Dot bg="red" />
+>>>>>>> 4cecc02 (edit : card clean up 적용 & 디자인 적용)
           <Text type="sub_1">
             <InputToggle
               name="cardTitle"
@@ -85,6 +108,7 @@ const ModalForms = ({ content, setContent }) => {
       </StyleDiv>
 
       <StyleDiv mg="0 0 6px auto" flex={["flex-end", "center"]}>
+<<<<<<< HEAD
         <DatePickerExample
           cardId={content.cardId}
           roomId={roomId}
@@ -100,6 +124,35 @@ const ModalForms = ({ content, setContent }) => {
           </Text>
         </StyleDiv>
       </StyleDiv>
+=======
+        <StyleDiv wh={["170px", "50px"]} pd="10px" flex={["center", "center"]}>
+          <StText type="body_2">
+            <InputToggle
+              shape="date"
+              name="startDate"
+              saveFunc={editFunc}
+              value={content.startDate}
+            />
+          </StText>
+        </StyleDiv>
+
+        <StyleDiv wh={["170px", "50px"]} pd="10px" flex={["center", "center"]}>
+          <StText type="body_2">
+            <InputToggle
+              shape="date"
+              name="endDate"
+              saveFunc={editFunc}
+              value={content.endDate}
+            />
+          </StText>
+        </StyleDiv>
+
+        <StyleDiv flex={["center", "center"]}>
+          <Text type="body_2">D-3</Text>
+        </StyleDiv>
+      </StyleDiv>
+
+>>>>>>> 4cecc02 (edit : card clean up 적용 & 디자인 적용)
       <StyleDiv
         wh={["480px", "180px"]}
         pd="10px"
@@ -116,6 +169,17 @@ const ModalForms = ({ content, setContent }) => {
           />
         </StText>
       </StyleDiv>
+<<<<<<< HEAD
+=======
+
+      {/* <div>
+        <select name="color" onChange={editContentHandler}>
+          <option>red</option>
+          <option>blue</option>
+          <option>green</option>
+        </select>
+      </div> */}
+>>>>>>> 4cecc02 (edit : card clean up 적용 & 디자인 적용)
     </Container>
   );
 };
