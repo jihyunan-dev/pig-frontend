@@ -64,7 +64,7 @@ const MyTodos = () => {
                 {!item.isChecked ? (
                   <Icon icon="checkbox" size="20px" />
                 ) : (
-                  <img src={Filled} alt="체크됨" />
+                  <Icon icon="checkbox-filled" size="20px" />
                 )}
               </IconBtn>
               <Text type="sub_2">{item.todoTitle}</Text>
@@ -106,12 +106,6 @@ const RemoveIcon = styled(Icon)`
 
 const RemoveGrid = styled(Grid)`
   visibility: hidden;
-
-  &:hover {
-    ${RemoveIcon} {
-      color: var(--notice);
-    }
-  }
 `;
 
 const Item = styled.li`
