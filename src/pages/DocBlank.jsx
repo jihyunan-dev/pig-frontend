@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import DocList from "../feature/document/DocList";
 
 // elem
-import { Button } from "../elem";
+import BlankImg from "../assets/img/doc-blank-img.jpg";
 
 import flex from "../themes/flex";
 
@@ -27,16 +27,14 @@ const DocBlank = () => {
     <Container>
       <DocList docList={[]} />
       <Content>
-        <p>아직 작성한 문서가 없습니다.</p>
-        <Button _onClick={() => history.push(`/workspace/${roomId}/doc/add`)}>
-          첫 문서 작성하기
-        </Button>
+        <ImgBox>
+          <BlankImgBox src={BlankImg} />
+        </ImgBox>
       </Content>
     </Container>
   );
 };
 
-// 임시 스타일
 const Container = styled.section`
   --header: 48px;
   --padding: 40px;
@@ -44,12 +42,33 @@ const Container = styled.section`
 
   ${flex("start", "start")};
   gap: 20px;
+  flex-grow: 1;
   min-height: calc(100vh - var(--minusHeight));
 `;
 
 const Content = styled.section`
-  font-size: 2rem;
+  --header: 48px;
+  --minusHeight: calc(var(--header));
+
+  ${flex};
   flex-grow: 1;
+  height: 100%;
+  font-size: 2rem;
+  min-height: calc(100vh - var(--minusHeight));
+`;
+
+const ImgBox = styled.div`
+  width: 70%;
+  max-width: 590px;
+  min-width: 300px;
+`;
+
+const BlankImgBox = styled.div`
+  width: 100%;
+  padding-top: calc(100% * (392 / 590));
+  margin-bottom: 20px;
+  background-image: ${(props) => `url(${props.src})`};
+  background-size: cover;
 `;
 
 export default DocBlank;
