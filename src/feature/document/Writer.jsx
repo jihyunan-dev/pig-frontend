@@ -74,7 +74,7 @@ const Writer = ({ targetDoc, setShowPrompt }) => {
   };
 
   return (
-    <>
+    <Container>
       <TitleBox>
         <TitleInput
           type="text"
@@ -102,9 +102,14 @@ const Writer = ({ targetDoc, setShowPrompt }) => {
           </Button>
         )}
       </BtnBox>
-    </>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+`;
 
 const TitleBox = styled.div`
   width: 100%;

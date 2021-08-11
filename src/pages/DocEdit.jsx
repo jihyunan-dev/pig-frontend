@@ -56,6 +56,7 @@ const DocEdit = () => {
 };
 
 const Container = styled.div`
+  width: 100%;
   padding: var(--smMargin);
 `;
 
