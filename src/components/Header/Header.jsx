@@ -55,13 +55,15 @@ const Header = () => {
           ) : (
             <>
               <Btns>
-                <IconBtn>
+                {/* <IconBtn>
                   <Icon icon="notice-focus" size="28px" />
-                </IconBtn>
+                </IconBtn> */}
                 <NameBtn>
                   <NameTag name={user.nickname} />
                 </NameBtn>
-                <Item onClick={() => dispatch(__logout())}>로그아웃</Item>
+                <LogoutBtn onClick={() => dispatch(__logout())}>
+                  로그아웃
+                </LogoutBtn>
               </Btns>
             </>
           )}
@@ -134,6 +136,10 @@ const Item = styled.button`
   padding: 4px 16px;
   color: var(--main);
   cursor: pointer;
+`;
+
+const LogoutBtn = styled(Item)`
+  color: var(--black);
 `;
 
 const Btns = styled.div`

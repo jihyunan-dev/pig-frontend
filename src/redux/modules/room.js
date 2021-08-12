@@ -23,6 +23,7 @@ const LOADING = "LOADING";
 //initialState
 const initialState = {
   // roomList: [],
+  currentRoom: {},
   searchedRoom: [],
   room: [],
   isLoading: false,
@@ -53,8 +54,8 @@ export const getRoomList = createAction(
     userId,
   })
 );
-export const getOneRoom = createAction(GET_ONE_ROOM, (roomId) => ({
-  roomId,
+export const getOneRoom = createAction(GET_ONE_ROOM, (room) => ({
+  room,
 }));
 export const editRoom = createAction(EDIT_ROOM, (room) => ({
   room,
@@ -260,8 +261,10 @@ export const __getOneRoom =
   (roomId) =>
   async (dispatch, getState, { history }) => {
     try {
-      const { data } = await roomApi.getOneRoom(roomId);
-      dispatch(getOneRoom(data));
+      const {
+        data: { result },
+      } = await roomApi.getOneRoom(roomId);
+      dispatch(getOneRoom(result));
     } catch (e) {
       console.log(e);
     }
@@ -332,7 +335,10 @@ const room = handleActions(
         draft.paging = action.payload.paging;
         draft.isLoading = false;
       }),
-
+    [GET_ONE_ROOM]: (state, action) =>
+      produce(state, (draft) => {
+        draft.currentRoom = action.payload.room;
+      }),
     [GET_MERGED_LIST]: (state, action) =>
       produce(state, (draft) => {
         draft.room = action.payload.markedList.concat(
