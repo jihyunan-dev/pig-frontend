@@ -29,6 +29,9 @@ const Card = ({ card, index, bucketId }) => {
     setModalContent(currentContent);
   }, [currentContent]);
 
+  const dDay =
+    parseInt(moment(moment(card.endDate) - Date.now()).format("D")) - 1;
+
   return (
     <>
       <Draggable draggableId={card.cardId} index={index}>
@@ -72,7 +75,7 @@ const Card = ({ card, index, bucketId }) => {
                     {card.endDate}
                   </Text>
                   <Text type="body_4" color="notice">
-                    D-{moment(moment(card.endDate) - Date.now()).format("D")}
+                    {dDay !== 0 ? `D-${dDay}` : "D-DAY"}
                   </Text>
                 </EndDate>
                 <CardStat>
