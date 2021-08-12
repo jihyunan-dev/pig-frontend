@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 
 // elem
 import { Text } from "../elem";
+import { scrollbar } from "../themes/scrollbar";
 import { body_3 } from "../themes/textStyle";
 
 const InputToggle = ({
@@ -93,13 +94,15 @@ const InputToggle = ({
 };
 
 const Container = styled.div`
+  ${scrollbar};
   width: 100%;
   height: 100%;
   ${(props) =>
     props.border &&
     css`
       border: 1px solid var(--line);
-    `}
+    `};
+  overflow: auto;
 `;
 
 const EditInput = styled.input`
@@ -116,16 +119,18 @@ const EditInput = styled.input`
 `;
 
 const EditTextarea = styled.textarea`
-  ${body_3}
+  ${body_3};
   width: 100%;
+  padding: 0;
   resize: none;
+  overflow-y: hidden;
 `;
 
 const TextAreaResult = styled(Text)`
   cursor: text !important;
   word-break: break-all;
   white-space: pre-wrap;
-  /* overflow-y: auto; */
+  overflow-y: auto;
 `;
 
 export default InputToggle;
