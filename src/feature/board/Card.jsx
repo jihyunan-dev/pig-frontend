@@ -72,7 +72,7 @@ const Card = ({ card, index, bucketId }) => {
                     {card.endDate}
                   </Text>
                   <Text type="body_4" color="notice">
-                    D-{moment(moment(card.endDate) - Date.now()).format("DD")}
+                    D-{moment(moment(card.endDate) - Date.now()).format("D")}
                   </Text>
                 </EndDate>
                 <CardStat>
